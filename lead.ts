@@ -33,7 +33,10 @@ router.post('/', captureLead);
 const app = new Application();
 
 // Add Routes
-app.use(oakCors());
+app.use(oakCors({
+  origin: /^.+kina-altodepinheiros.com.br$/,
+  optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
+}),);
 app.use(router.routes());
 app.use(router.allowedMethods());
 
