@@ -27,6 +27,12 @@ const captureLead = async (ctx: Context) => {
   }
 };
 
+const test = (ctx: Context) => {
+  ctx.response.body = 'Access allowed!';
+  ctx.response.status = Status.OK;
+}
+
+router.get('/', test);
 router.post('/', captureLead);
 
 // Create Application Like Express
@@ -38,7 +44,6 @@ app.use(oakCors({
   optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
 }),);
 app.use(router.routes());
-app.use(router.allowedMethods());
 
 console.log(`App Started at Port ${APP_PORT}`);
 await app.listen(`${APP_HOST}:${APP_PORT}`);
