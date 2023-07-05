@@ -32,7 +32,7 @@ const test = (ctx: Context) => {
   ctx.response.status = Status.OK;
 }
 
-router.get('/', test);
+//router.get('/', test);
 router.post('/', captureLead);
 
 // Create Application Like Express
